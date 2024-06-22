@@ -120,15 +120,32 @@ This project involves building a web application that allows users to upload XML
 ![image](https://github.com/KayalCodes/Automated-document-classification-and-summarization-system/assets/35140705/dff0ef4f-13b2-4b41-a114-8e8d128449d2)
 
 **Flow of the System:**
-1. User visits the web page http://localhost:8000/
+1. Visits the web page http://localhost:8000/
 2. Uploads an XML file via the provided form  (or use the ***example.xml*** file in the repo)
    - Visit this link [Legal Case Reports Dataset](https://archive.ics.uci.edu/dataset/239/legal+case+reports)
    - Download the dataset
    - Extract all the files
    - Upload any XML file from the path (legal+case+reports/corpus/fulltext) 
-3. Clicks the ***Analyze Document*** button.
+3. Click the ***Analyze Document*** button.
 4. Backend Processing starts
    - The uploaded file is sent to the /process_xml/ endpoint.
    - The backend reads and processes the file: extracts, cleans, summarizes, and classifies the text.
    - Results are returned to the frontend as JSON.
-   - Summary and the legal category of the uploaded case will be displayed in the Result section.
+   - Summary and the Legal Category of the uploaded case document will be displayed in the Result section.
+     
+## Justification in the Context of the Project
+
+In this project, the main tasks are summarizing legal documents and classifying them into legal categories. Here’s why the chosen models are appropriate:
+
+1. **Summarization Task:**
+
+    - **Complexity of Legal Texts:** Legal documents often contain dense and complex language. BART’s ability to generate coherent summaries from such texts is crucial.
+    - **Accuracy:** BART’s fine-tuning on summarization tasks ensures that the summaries are both accurate and coherent, capturing the essential points of the documents.
+    - Other models like T5 Conditional Generation and Tokenizer, BERT Sequence Classification and Tokenizer, Pegasus Conditional Generation and Tokenizer were also tested, but the output was better with BART.
+
+2. **Classification Task:**
+
+    - **Semantic Understanding:** Classifying legal documents requires understanding the semantic content to match them to the correct legal category. SentenceTransformer’s embeddings provide a meaningful representation of the text, which helps in accurate classification.
+    - **Similarity Measurement:** The task of classification can be seen as measuring the similarity between the document and the category descriptions. SentenceTransformer excels at such similarity tasks. Also 'MiniLM-L6-v2' model allows to handle large-scale datasets efficiently while maintaining state-of-the-art performance in tasks like sentence similarity.
+
+Using these appropriate models, the project ensures high-quality outputs for both tasks (Summarization and classification). This combination allows for efficient processing of legal documents, making the summarization and classification accurate and reliable.
