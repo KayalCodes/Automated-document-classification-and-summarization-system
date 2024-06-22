@@ -121,7 +121,7 @@ This project involves building a web application that allows users to upload XML
 
 **Flow of the System:**
 1. User visits the web page http://localhost:8000/
-2. Uploads an XML file via the provided form.
+2. Uploads an XML file via the provided form  (or use the ***example.xml*** file in the repo)
    - Visit this link [Legal Case Reports Dataset](https://archive.ics.uci.edu/dataset/239/legal+case+reports)
    - Download the dataset
    - Extract all the files
